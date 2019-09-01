@@ -11,8 +11,8 @@ namespace cpst
     /// </summary>
     public partial class Cpst_main : Window
     {
-        readonly DatabaseManager databaseConnection = new DatabaseManager();
 
+        DatabaseManager databaseConnection = new DatabaseManager();
         DispatcherTimer dispatchertimer = new DispatcherTimer();
 
 
@@ -23,6 +23,8 @@ namespace cpst
             Usernamelogoutbutton();
         }
 
+
+        //Sensor gets data from database
         private void SetCircleColor(SensorTypes sentype, int val)
         {
             SolidColorBrush color = Brushes.Red;
@@ -87,6 +89,7 @@ namespace cpst
             }
         }
 
+        //
         public void Timer()
         {
             dispatchertimer.Tick += new EventHandler(DispatcherTimer_Tick);
@@ -101,6 +104,10 @@ namespace cpst
                 GetSensorStatus(sentype);
             }
         }
+
+
+
+
 
 
 
