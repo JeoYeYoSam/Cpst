@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Windows;
-using System.Data;
 using System.Collections.Generic;
 
 namespace cpst
@@ -47,26 +46,31 @@ namespace cpst
         // Method to analyse login when loginButton is pressed or hit the Enter Key
         public bool Login(string username, string password)
         {
-            string queryAuthentication = $"SELECT * FROM users WHERE username = @username AND password= @password";
+            string queryAuthentication = $"SELECT * FROM users WHERE username ='"+username+"' AND password='"+password+"'";
 
             try
             {
                 open();                         
                 MySqlCommand commandDatabase = new MySqlCommand(queryAuthentication, con);
-                commandDatabase.Parameters.AddWithValue("@username", username);
-                commandDatabase.Parameters.AddWithValue("@password", password);
-                MySqlDataReader myReader = commandDatabase.ExecuteReader();
+                MySqlDataReader myReader = commandDatabase.ExecuteReader();                
                 while (myReader.Read())
                 {
-                    checkcanlogin = myReader["can_login"].ToString();                   
+                    checkcanlogin = myReader["can_login"].ToString();                                        
                 }
-
-                if (checkcanlogin == "No")
-                {
+                if (checkcanlogin == "Yes")
+                {                    
+                    return true;
+                }                
+                else if (checkcanlogin == "No")
+                {                    
                     MessageBox.Show("User is deactivated");
                     return false;
                 }
-                return true;
+                else
+                {
+                    MessageBox.Show("Username or password is wrong");
+                    return false;
+                }
             }
             
             catch (Exception e)

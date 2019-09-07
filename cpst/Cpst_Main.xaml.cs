@@ -93,7 +93,7 @@ namespace cpst
         public void Timer()
         {
             dispatchertimer.Tick += new EventHandler(DispatcherTimer_Tick);
-            dispatchertimer.Interval = new TimeSpan(0, 0, 5);
+            dispatchertimer.Interval = new TimeSpan(0, 0, 1);
             dispatchertimer.Start();
         }
         public void DispatcherTimer_Tick(object sender, EventArgs e)

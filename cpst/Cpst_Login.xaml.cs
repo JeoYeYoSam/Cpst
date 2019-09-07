@@ -21,11 +21,11 @@ namespace cpst
         //button login in database
         private void Btn_login_Click(object sender, RoutedEventArgs e)
         {
-           if(databaseConnection.Login(txt_username.Text, pw_box.ToString()))
+           if(databaseConnection.Login(txt_username.Text, pw_box.Password.ToString()))
             {
                 Cpst_main main = new Cpst_main();
                 main.Show();
-                this.Close();
+                this.Close();                
             }
         }
 
@@ -34,7 +34,7 @@ namespace cpst
         {         
             if (e.Key == System.Windows.Input.Key.Enter)
             {
-                if (databaseConnection.Login(txt_username.Text, pw_box.ToString()))
+                if (databaseConnection.Login(txt_username.Text, pw_box.Password.ToString()))
                 {
                     Cpst_main main = new Cpst_main();
                     main.Show();
