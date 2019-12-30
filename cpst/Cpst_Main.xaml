@@ -31,6 +31,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
                 <Ellipse Grid.Column="0" x:Name="circle_fill_color_1" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="214,30,96,30" />
                 <Ellipse Grid.Column="1" x:Name="circle_fill_color_2" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="228,30,82,30" />
                 <Ellipse Grid.Column="2" x:Name="circle_fill_color_3" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="236,30,74,30" />

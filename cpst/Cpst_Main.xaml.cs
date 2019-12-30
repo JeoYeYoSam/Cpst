@@ -11,10 +11,9 @@ namespace cpst
     /// </summary>
     public partial class Cpst_main : Window
     {
-
         DatabaseManager databaseConnection = new DatabaseManager();
-        DispatcherTimer dispatchertimer = new DispatcherTimer();
-
+        DispatcherTimer dispatchertimer = new DispatcherTimer();        
+        
 
         public Cpst_main()
         {
@@ -60,7 +59,6 @@ namespace cpst
                     break;
             }
         }
-
         private void GetSensorStatus(SensorTypes sentype)
         {
             var values = databaseConnection.GetSensorStatus(sentype);
@@ -89,7 +87,8 @@ namespace cpst
             }
         }
 
-        //
+
+        //Timer to Check every second Data from Database
         public void Timer()
         {
             dispatchertimer.Tick += new EventHandler(DispatcherTimer_Tick);
@@ -104,10 +103,6 @@ namespace cpst
                 GetSensorStatus(sentype);
             }
         }
-
-
-
-
 
 
 
@@ -169,8 +164,8 @@ namespace cpst
             txtbox_logout.Background = Brushes.Gray;
         }
         private void Usernamelogoutbutton()
-        {            
-           // txtbox_logout.Text = txt_username.Text;                
+        {
+            //txtbox_logout.Text = databaseConnection.username;
         }
 
         //Move window with label

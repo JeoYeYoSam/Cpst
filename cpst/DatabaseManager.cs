@@ -9,9 +9,8 @@ namespace cpst
     {
 
         private string checkcanlogin;
-
         //Connection String to connect to Database
-        private MySqlConnection con = new MySqlConnection(@"Server=localhost;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
+        private MySqlConnection con = new MySqlConnection(@"Server=192.168.0.105;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
         
         private void open()
         {
@@ -58,7 +57,7 @@ namespace cpst
                     checkcanlogin = myReader["can_login"].ToString();                                        
                 }
                 if (checkcanlogin == "Yes")
-                {                    
+                {
                     return true;
                 }                
                 else if (checkcanlogin == "No")
@@ -104,9 +103,10 @@ namespace cpst
                     while (myReader.Read())
                     {
                         Console.WriteLine(myReader["status"].ToString());
-                        values.Add(Convert.ToInt32(myReader["status"]));
-                        return values;
+                        values.Add(Convert.ToInt32(myReader["status"]));                                         
+                        
                     }
+                    return values;
                 }
             }
             catch (Exception e)

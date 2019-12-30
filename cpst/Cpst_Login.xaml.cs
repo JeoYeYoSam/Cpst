@@ -9,8 +9,8 @@ namespace cpst
     public partial class Cpst_Login : Window
     {       
 
-        DatabaseManager databaseConnection = new DatabaseManager();       
-        
+        DatabaseManager databaseConnection = new DatabaseManager();
+        public string username;
         public Cpst_Login()
         {
             InitializeComponent();
@@ -27,6 +27,7 @@ namespace cpst
                 main.Show();
                 this.Close();                
             }
+            username = txt_username.Text;
         }
 
         //Enter key on Passwordbox     
