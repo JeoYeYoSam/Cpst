@@ -1,28 +1,24 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
+using MySql.Data.MySqlClient;
 using System;
 
 
 namespace cpst
-{
-    /// <summary>
-    /// Interaktionslogik für Window1.xaml
-    /// </summary>
+{   
     public partial class Cpst_main : Window
     {
         DatabaseManager databaseConnection = new DatabaseManager();
-        DispatcherTimer dispatchertimer = new DispatcherTimer();        
-        
+        DispatcherTimer dispatchertimer = new DispatcherTimer();
 
         public Cpst_main()
         {
             InitializeComponent();
             Timer();
-            Usernamelogoutbutton();
+            Usernamelogoutbutton();            
         }
-
-
+        
         //Sensor gets data from database
         private void SetCircleColor(SensorTypes sentype, int val)
         {
@@ -69,7 +65,6 @@ namespace cpst
                         if (listboxstatus.Items[n].ToString() == "0")
                         {
                             listboxstatus.Items[n] = "Off";
-
                         }
                         else
                         {
@@ -87,7 +82,6 @@ namespace cpst
             }
         }
 
-
         //Timer to Check every second Data from Database
         public void Timer()
         {
@@ -97,11 +91,11 @@ namespace cpst
         }
         public void DispatcherTimer_Tick(object sender, EventArgs e)
         {
+            
             foreach (SensorTypes sentype in Enum.GetValues(typeof(SensorTypes))) 
-            {
-                //SensorTypes realsentype=(SensorTypes) sentype;
-                GetSensorStatus(sentype);
-            }
+            {                
+                GetSensorStatus(sentype);                
+            }           
         }
 
 
@@ -165,7 +159,7 @@ namespace cpst
         }
         private void Usernamelogoutbutton()
         {
-            //txtbox_logout.Text = databaseConnection.username;
+            txtbox_logout.Text = "Logout";
         }
 
         //Move window with label

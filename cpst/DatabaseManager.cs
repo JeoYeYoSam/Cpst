@@ -7,41 +7,28 @@ namespace cpst
 {
     class DatabaseManager
     {
+        public string querySensor1 = "select * From sensor_one";
+        public string querySensor2 = "select * From sensor_two";
+        public string querySensor3 = "select * From sensor_three";
+        public string querySensor4 = "select * From sensor_four";
+        public string querySensor5 = "select * From sensor_five";
+        public string querySensor6 = "select * From sensor_six";
+        public string checkcanlogin;
+        public string username;
+       
 
-        private string checkcanlogin;
         //Connection String to connect to Database
-        private MySqlConnection con = new MySqlConnection(@"Server=192.168.0.105;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
+        public MySqlConnection con = new MySqlConnection(@"Server=192.168.0.102;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
         
-        private void open()
+        public void Open()
         {
             con.Open();
-        }
-        
-        private void close()
+        }        
+        public void Close()
         {
             con.Close();
         }
-
-        private string GetSensorQueryString(SensorTypes sentype)
-        {
-            switch (sentype)
-            {
-                case SensorTypes.Sensor1:
-                    return "select * From sensor_one";
-                case SensorTypes.Sensor2:
-                    return "select * From sensor_two";
-                case SensorTypes.Sensor3:
-                    return "select * From sensor_three";
-                case SensorTypes.Sensor4:
-                    return "select * From sensor_four";
-                case SensorTypes.Sensor5:
-                    return "select * From sensor_five";
-                case SensorTypes.Sensor6:
-                    return "select * From sensor_six";
-            }
-            return null;
-        }
-
+        
         // Method to analyse login when loginButton is pressed or hit the Enter Key
         public bool Login(string username, string password)
         {
@@ -49,7 +36,7 @@ namespace cpst
 
             try
             {
-                open();                         
+                Open();                         
                 MySqlCommand commandDatabase = new MySqlCommand(queryAuthentication, con);
                 MySqlDataReader myReader = commandDatabase.ExecuteReader();                
                 while (myReader.Read())
@@ -57,7 +44,7 @@ namespace cpst
                     checkcanlogin = myReader["can_login"].ToString();                                        
                 }
                 if (checkcanlogin == "Yes")
-                {
+                {                    
                     return true;
                 }                
                 else if (checkcanlogin == "No")
@@ -79,13 +66,32 @@ namespace cpst
             }
             finally
             {
-                close();
+                Close();
             }
         }
 
+        private string GetSensorQueryString(SensorTypes sentype)
+        {
+            switch (sentype)
+            {
+                case SensorTypes.Sensor1:
+                    return querySensor1;
+                case SensorTypes.Sensor2:
+                    return querySensor2;
+                case SensorTypes.Sensor3:
+                    return querySensor3;
+                case SensorTypes.Sensor4:
+                    return querySensor4;
+                case SensorTypes.Sensor5:
+                    return querySensor5;
+                case SensorTypes.Sensor6:
+                    return querySensor6;
+            }
+            return null;
+        }
         public List<int> GetSensorStatus(SensorTypes sentype)
         {
-            open();
+            Open();
 
             MySqlCommand commandDatabase = new MySqlCommand(GetSensorQueryString(sentype),con)
             {
@@ -99,14 +105,12 @@ namespace cpst
                 if (myReader.HasRows)
                 {
                     List<int> values = new List<int>();
-
+                    
                     while (myReader.Read())
-                    {
-                        Console.WriteLine(myReader["status"].ToString());
-                        values.Add(Convert.ToInt32(myReader["status"]));                                         
-                        
-                    }
-                    return values;
+                    {                           
+                        values.Add(Convert.ToInt32(myReader["status"]));   
+                    }                                        
+                    return values;                    
                 }
             }
             catch (Exception e)
@@ -116,9 +120,14 @@ namespace cpst
             }
             finally
             {
-                close();
+                Close();
             }
             return new List<int>();            
-        }      
+        }
+
+
+      
+
+
     }
 }
