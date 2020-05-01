@@ -70,9 +70,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Cpst_PasswdChange.xaml.cs">
+      <DependentUpon>Cpst_PasswdChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="SensorTypes.cs" />
     <Page Include="Cpst_Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cpst_PasswdChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

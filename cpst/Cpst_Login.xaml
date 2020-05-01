@@ -6,46 +6,24 @@
         xmlns:local="clr-namespace:cpst"
         mc:Ignorable="d"
         Title="Cpst Login" Height="300" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Visibility="Visible">
-    <Border >
-        <StackPanel>
 
-            <!--Dragmove_label-->
-            <Label Content="CPST-LOGIN" Background="WhiteSmoke" Height="25" Margin="0 0 0 0" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
+    <StackPanel>
+        <!--Dragmove_label-->
+        <Label Content="CPST-LOGIN" Background="WhiteSmoke" Height="25" Margin="0 0 0 0" MouseLeftButtonDown="Label_MouseLeftButtonDown" />
+        <!--Close app label-->
+        <Label  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_close"  Background="WhiteSmoke" FontSize="12" FontWeight="Bold" Content="X" Height="25" Width="25"  Margin="0 -25 0 0" MouseLeave="Lbl_close_MouseLeave" MouseLeftButtonDown="Lbl_close_MouseLeftButtonDown" MouseLeftButtonUp="Lbl_close_MouseLeftButtonUp" MouseEnter="Lbl_close_MouseEnter"/>
 
-            <!--Close app label-->
-            <Label  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_close"  Background="WhiteSmoke" FontSize="12" FontWeight="Bold" Content="X" Height="25" Width="25"  Margin="0 -25 0 0" MouseLeave="Lbl_close_MouseLeave" MouseLeftButtonDown="Lbl_close_MouseLeftButtonDown" MouseLeftButtonUp="Lbl_close_MouseLeftButtonUp" MouseEnter="Lbl_close_MouseEnter"/>
+        <!--Minimze app label-->
+        <Label  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_minimize"  Background="WhiteSmoke" FontSize="13" FontWeight="Bold" Content="-" Height="25" Width="25"  Margin="0 -25 25 0" MouseLeave="Lbl_minimize_MouseLeave" MouseLeftButtonDown="Lbl_minimize_MouseLeftButtonDown" MouseLeftButtonUp="Lbl_minimize_MouseLeftButtonUp" MouseEnter="Lbl_minimize_MouseEnter" />
 
-            <!--Minimze app label-->
-            <Label  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_minimize"  Background="WhiteSmoke" FontSize="13" FontWeight="Bold" Content="-" Height="25" Width="25"  Margin="0 -25 25 0" MouseLeave="Lbl_minimize_MouseLeave" MouseLeftButtonDown="Lbl_minimize_MouseLeftButtonDown" MouseLeftButtonUp="Lbl_minimize_MouseLeftButtonUp" MouseEnter="Lbl_minimize_MouseEnter" />
+        <Grid Height="274">
+            <TextBlock Grid.Column="0" Text="Username" FontWeight="Bold" Margin="126,58,310,197"/>
+            <TextBox x:Name="txt_username" Margin="195,58,107,197"/>
+            <TextBlock Grid.Column="0" Text="Password" FontWeight="Bold" Margin="126,102,310,150" RenderTransformOrigin="0.474,-1.197"/>
+            <PasswordBox x:Name="pw_box" Margin="195,101,107,150" KeyUp="Pw_box_KeyUp"/>
+            <Button x:Name="btn_login" Content="Login" Margin="195,210,190,33" Click="Btn_login_Click"/>
 
-            <!--Username-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        </Grid>   
 
-                <TextBlock Grid.Column="0" Text="Username" FontWeight="Bold" Margin="126,58,24,22"/>
-                <TextBox x:Name="txt_username" Margin="237,58,113,22" Grid.ColumnSpan="2"/>
-            </Grid>
-
-            <!--Password-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Grid.Column="0" Text="Password" FontWeight="Bold" Margin="126,7,24,33"/>
-                <PasswordBox x:Name="pw_box" Margin="237,7,113,33" KeyUp="Pw_box_KeyUp" Grid.ColumnSpan="2"/>
-            </Grid>
-
-            <!--Button Login-->
-
-            <Button x:Name="btn_login" Content="Login" Margin="193,50,192,0" Click="Btn_login_Click"/>
-
-
-
-        </StackPanel>
-    </Border>
+    </StackPanel>
 </Window>

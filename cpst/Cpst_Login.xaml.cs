@@ -4,10 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 
 namespace cpst
-{
-    /// <summary>
-    /// Interaktionslogik für Cpst_Login.xaml
-    /// </summary>
+{    
     public partial class Cpst_Login : Window
     {       
 
@@ -29,9 +26,7 @@ namespace cpst
         }
 
         private void login()
-        {            
-            //databaseConnection.ChangePassword(hashedPassword);
-
+        {          
             if (databaseConnection.Login(txt_username.Text, hashingPassword()))
             {
                 Cpst_main main = new Cpst_main();

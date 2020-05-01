@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Cpst Main" Height="600" Width="1050" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="White">
 
-
     <StackPanel >
 
         <!--Dragmove_label-->
@@ -44,5 +43,6 @@
             <Ellipse x:Name="circle_fill_color_6" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="959,352,51,151" RenderTransformOrigin="-0.483,0.7" />
             <TextBlock x:Name="txt_sensorsixtime"  Margin="764,438,96,45"/>
         </Grid>
+        
     </StackPanel>
 </Window>
