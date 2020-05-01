@@ -11,6 +11,7 @@ namespace cpst
     {
         DatabaseManager databaseConnection = new DatabaseManager();
         DispatcherTimer dispatchertimer = new DispatcherTimer();
+        readonly Cpst_Login login = new Cpst_Login();
 
         public Cpst_main()
         {
@@ -55,45 +56,30 @@ namespace cpst
                     break;
             }
         }
-
-        private void SetStatusTime(SensorTypes sentype, string val)
-        {
-            switch (sentype)
-            {
-                case SensorTypes.Sensor1:
-                    txt_sensoronetime.Text = val;
-                    break;
-                case SensorTypes.Sensor2:
-                    txt_sensortwotime.Text = val;
-                    break;
-                case SensorTypes.Sensor3:
-                    txt_sensorthreetime.Text = val;
-                    break;
-                case SensorTypes.Sensor4:
-                    txt_sensorfourime.Text = val;
-                    break;
-                case SensorTypes.Sensor5:
-                    txt_sensorfivetime.Text = val;
-                    break;
-                case SensorTypes.Sensor6:
-                    txt_sensorsixtime.Text = val;
-                    break;
-                default:
-                    break;
-            }
-        }
-
         private void GetSensorStatus(SensorTypes sentype)
         {
-            var valuesStatus = databaseConnection.GetSensorStatus(sentype);
-            var valueStatusTime = databaseConnection.GetSensorStatusTime(sentype);
-            foreach (var val in valuesStatus)
-            {               
-                SetCircleColor(sentype, val);                
-            }
-            foreach (var val in valueStatusTime)
-            {
-                SetStatusTime(sentype, val);
+            var values = databaseConnection.GetSensorStatus(sentype);
+            foreach (var val in values)
+            {                
+                    for (int n = listboxstatus.Items.Count - 1; n >= 0; --n)
+                    {
+                        if (listboxstatus.Items[n].ToString() == "0")
+                        {
+                            listboxstatus.Items[n] = "Off";
+                        }
+                        else
+                        {
+                            if (listboxstatus.Items[n].ToString() == "1")
+                            {
+                                listboxstatus.Items[n] = "Frei";
+                            }
+                            else
+                            {
+                                listboxstatus.Items[n] = "Belegt";
+                            }
+                        }
+                    }
+                SetCircleColor(sentype, val);
             }
         }
 
@@ -136,7 +122,7 @@ namespace cpst
         //Close button
         private void Lbl_close_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
         private void Lbl_close_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -154,10 +140,10 @@ namespace cpst
         //Logout button
         private void TextBlock_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            dispatchertimer.Stop();
             var main = new Cpst_Login();
             this.Close();            
-            main.Show();         
+            main.Show();
+            dispatchertimer.Stop();
             
         }
         private void TextBlock_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
@@ -174,7 +160,7 @@ namespace cpst
         }
         private void Usernamelogoutbutton()
         {
-            txtbox_logout.Text ="Logout";
+            txtbox_logout.Text = login.username;
         }
 
         //Move window with label

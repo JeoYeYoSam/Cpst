@@ -14,11 +14,9 @@ namespace cpst
         public string querySensor5 = "select * From sensor_five";
         public string querySensor6 = "select * From sensor_six";
         public string checkcanlogin;
-        public string username;
-       
 
         //Connection String to connect to Database
-        public MySqlConnection con = new MySqlConnection(@"Server=192.168.0.102;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
+        public MySqlConnection con = new MySqlConnection(@"Server=localhost;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
         
         public void Open()
         {
@@ -28,7 +26,17 @@ namespace cpst
         {
             con.Close();
         }
-        
+
+        public void ChangePassword(string password)
+        {
+            con.Open();
+            string query = "UPDATE users SET password = '" + password + "' WHERE id =6";
+            MySqlCommand commandDatabase = new MySqlCommand(query, con);
+            commandDatabase.ExecuteReader();
+            con.Close();
+        }
+
+
         // Method to analyse login when loginButton is pressed or hit the Enter Key
         public bool Login(string username, string password)
         {
@@ -89,6 +97,42 @@ namespace cpst
             }
             return null;
         }
+        public List<string> GetSensorStatusTime(SensorTypes sentype)
+        {
+            Open();
+
+            MySqlCommand commandDatabase = new MySqlCommand(GetSensorQueryString(sentype), con)
+            {
+                CommandTimeout = 60
+            };
+
+            try
+            {
+                MySqlDataReader myReader = commandDatabase.ExecuteReader();
+
+                if (myReader.HasRows)
+                {
+                    List<string> valuesStatusTime = new List<string>();
+
+                    while (myReader.Read())
+                    {
+                        valuesStatusTime.Add(Convert.ToString(myReader["time"]));
+                    }
+                    return valuesStatusTime;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Query error: " + e.Message);
+
+            }
+            finally
+            {
+                Close();
+            }
+            return new List<string>();
+        }
+
         public List<int> GetSensorStatus(SensorTypes sentype)
         {
             Open();
@@ -104,13 +148,13 @@ namespace cpst
 
                 if (myReader.HasRows)
                 {
-                    List<int> values = new List<int>();
-                    
+                    List<int> valuesStatus = new List<int>();
+                   
                     while (myReader.Read())
                     {                           
-                        values.Add(Convert.ToInt32(myReader["status"]));   
+                        valuesStatus.Add(Convert.ToInt32(myReader["status"]));                        
                     }                                        
-                    return values;                    
+                    return valuesStatus;                    
                 }
             }
             catch (Exception e)

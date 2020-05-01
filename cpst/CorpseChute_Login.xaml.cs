@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace cpst
@@ -12,38 +10,25 @@ namespace cpst
     {       
 
         DatabaseManager databaseConnection = new DatabaseManager();
-        
+        public string username { get; set; }
         public Cpst_Login()
         {
             InitializeComponent();
         }             
         
-        public string hashingPassword()
+        
+
+        //button login in database
+        private void Btn_login_Click(object sender, RoutedEventArgs e)
         {
-            var sha1 = new SHA1CryptoServiceProvider();
-            var data = Encoding.ASCII.GetBytes(pw_box.Password);
-            var sha1data = sha1.ComputeHash(data);
-            var hashedPassword = Encoding.ASCII.GetString(sha1data);
-            System.Console.WriteLine(hashedPassword);
-            return hashedPassword;            
-        }
-
-        private void login()
-        {            
-            //databaseConnection.ChangePassword(hashedPassword);
-
-            if (databaseConnection.Login(txt_username.Text, hashingPassword()))
+           if(databaseConnection.Login(txt_username.Text, pw_box.Password.ToString()))
             {
+                username = txt_username.Text;
                 Cpst_main main = new Cpst_main();
                 main.Show();
-                this.Close();
+                this.Close();                
             }
-        }
-
-        //Button login in database
-        private void Btn_login_Click(object sender, RoutedEventArgs e)
-        {                        
-            login();            
+            
         }
 
         //Enter key on Passwordbox     
@@ -51,8 +36,14 @@ namespace cpst
         {         
             if (e.Key == System.Windows.Input.Key.Enter)
             {
-                login();
+                if (databaseConnection.Login(txt_username.Text, pw_box.Password.ToString()))
+                {
+                    Cpst_main main = new Cpst_main();
+                    main.Show();
+                    this.Close();
+                }
             }
+
         }
 
         //Dragmove label
@@ -72,7 +63,7 @@ namespace cpst
         }
         private void Lbl_close_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Application.Current.Shutdown();
+            this.Close();
         }
         private void Lbl_close_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {

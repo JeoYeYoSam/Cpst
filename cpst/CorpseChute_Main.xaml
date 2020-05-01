@@ -1,0 +1,79 @@
+﻿<Window x:Class="cpst.Cpst_main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:cpst"
+        mc:Ignorable="d"
+        Title="Cpst Main" Height="700" Width="1050" WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="White">
+
+
+    <Border >
+
+        <StackPanel >
+
+            <!--Dragmove_label-->
+            <Label FontSize="13" Content="CPST-APP" Background="WhiteSmoke" Height="25" Margin="0 0 0 0" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+
+            <!--Close app label-->
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_close"  Background="WhiteSmoke" FontSize="12" FontWeight="Bold" Content="X" Height="25" Width="25"  Margin="0 -25 0 0"  MouseLeftButtonUp="Lbl_close_MouseLeftButtonUp" MouseLeave="Lbl_close_MouseLeave" MouseEnter="Lbl_close_MouseEnter" MouseLeftButtonDown="Lbl_close_MouseLeftButtonDown"/>
+
+            <!--Minimze app label-->
+            <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_minimize"  Background="WhiteSmoke" FontSize="13" FontWeight="Bold" Content="-" Height="25" Width="25"  Margin="0 -25 25 0" MouseLeave="Lbl_minimize_MouseLeave" MouseLeftButtonDown="Lbl_minimize_MouseLeftButtonDown" MouseLeftButtonUp="Lbl_minimize_MouseLeftButtonUp" MouseEnter="Lbl_minimize_MouseEnter"/>
+
+            <!--logout label-->
+            <TextBlock Text="Logout"  x:Name="txtbox_logout" Margin="0 0 5 0" FontSize="20" TextDecorations="Underline" HorizontalAlignment="Right" TextAlignment="Center" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" MouseEnter="TextBlock_MouseEnter" MouseLeave="Txtbox_logout_MouseLeave" MouseLeftButtonDown="Txtbox_logout_MouseLeftButtonDown"/>
+
+            <!--1,2,3 Sensor -->
+            <Grid Margin="0,30,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="Sensors\Sensor1_bold.jpg" Margin="0,0,160,-21"/>
+                <Ellipse Grid.Column="0" x:Name="circle_fill_color_1" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="214,30,96,30" />
+                <Image Source="Sensors\Sensor2_bold.jpg" Margin="0,0,160,-21" Grid.Column="1"/>
+                <Ellipse Grid.Column="1" x:Name="circle_fill_color_2" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="228,30,82,30" />
+                <Image Source="Sensors\Sensor3_bold.jpg" Margin="0,0,160,-21" Grid.Column="2"/>
+                <Ellipse Grid.Column="2" x:Name="circle_fill_color_3" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="236,30,74,30" />
+            </Grid> 
+            
+            <Grid>
+                <ListBox Visibility="Hidden" x:Name="listboxsensor1on" Grid.Column="0" Margin="10,0,881,0" Height="100"/>
+                <ListBox Visibility="Hidden" x:Name="listboxsensor1off" Margin="192,0,695,0" Height="100"/>
+                <ListBox Visibility="Hidden" x:Name="listboxstatus" Margin="389,0,511,0" Width="150" Height="100"/>
+            </Grid>
+            <Grid>
+                <ListBox Visibility="Hidden" BorderThickness="0" Margin="6,-95,714,-5" Width="330" Height="100" x:Name="listboxSensor1Data"/>
+                <ListBox Visibility="Hidden" BorderThickness="0" Margin="362,-95,358,-5" Width="330" Height="100" x:Name="listboxSensor2Data"/>
+                <ListBox Visibility="Hidden" BorderThickness="0" Margin="714,-95,6,-5" Width="330" Height="100" x:Name="listboxSensor3Data"/>
+            
+            </Grid>
+            
+
+
+
+            <!--4,5,6 Sensor -->
+            <Grid Margin="0 -130 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="Sensors\Sensor4_bold.jpg" Margin="0,221,160,0" />
+                <Ellipse Grid.Column="0" x:Name="circle_fill_color_4" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="212,265,98,35" />
+                <Image Source="Sensors\Sensor5_bold.jpg" Margin="10,221,150,0" Grid.Column="1" />
+                <Ellipse Grid.Column="1" x:Name="circle_fill_color_5" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="230,265,80,35" />
+                <Image Source="Sensors\Sensor6_bold.jpg" Margin="10,221,150,0" Grid.Column="2" />
+                <Ellipse Grid.Column="2" x:Name="circle_fill_color_6" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="232,265,78,35" />
+            </Grid>
+
+
+        </StackPanel>
+
+    </Border>
+
+</Window>

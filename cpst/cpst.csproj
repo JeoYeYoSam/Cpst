@@ -71,7 +71,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DatabaseManager.cs" />
-    <Compile Include="Sensors.cs" />
     <Compile Include="SensorTypes.cs" />
     <Page Include="Cpst_Main.xaml">
       <SubType>Designer</SubType>
