@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace cpst
@@ -14,21 +12,12 @@ namespace cpst
         {
             InitializeComponent();
         }             
-        
-        public string hashingPassword()
-        {
-            var sha1 = new SHA1CryptoServiceProvider();
-            var data = Encoding.ASCII.GetBytes(pw_box.Password);
-            var sha1data = sha1.ComputeHash(data);
-            var hashedPassword = Encoding.ASCII.GetString(sha1data);
-            System.Console.WriteLine(hashedPassword);
-            return hashedPassword;            
-        }
 
         private void login()
-        {          
-            if (databaseConnection.Login(txt_username.Text, hashingPassword()))
+        {            
+            if (databaseConnection.Login(txt_username.Text, pw_box.Password))
             {
+                Global.username = txt_username.Text;
                 Cpst_main main = new Cpst_main();
                 main.Show();
                 this.Close();

@@ -14,8 +14,7 @@ namespace cpst
         public Cpst_main()
         {
             InitializeComponent();
-            Timer();
-            Usernamelogoutbutton();            
+            Timer();            
         }
         
         //Sensor gets data from database
@@ -112,8 +111,6 @@ namespace cpst
             }           
         }
 
-
-
         //Minimize button
         private void Lbl_minimize_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -154,10 +151,9 @@ namespace cpst
         private void TextBlock_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             dispatchertimer.Stop();
-            var main = new Cpst_Login();
+            var login = new Cpst_Login();
             this.Close();            
-            main.Show();         
-            
+            login.Show();      
         }
         private void TextBlock_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
@@ -170,17 +166,21 @@ namespace cpst
         private void Txtbox_logout_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             txtbox_logout.Background = Brushes.Gray;
-        }
-        private void Usernamelogoutbutton()
-        {
-            txtbox_logout.Text ="Logout";
-        }
+        }        
 
         //Move window with label
         private void Label_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DragMove();
         }
+
+        //PasswordChangeIcon
+        private void PwChange_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var pwchange = new Cpst_PasswdChange();
+            pwchange.Show();
+        }
+     
     }    
 }
 

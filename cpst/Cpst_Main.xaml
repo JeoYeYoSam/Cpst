@@ -11,19 +11,20 @@
 
         <!--Dragmove_label-->
         <Label FontSize="13" Content="CPST-APP" Background="WhiteSmoke" Height="25" Margin="0 0 0 0" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
-        <Image x:Name="PwChange" Margin="818,0,84,-21" />
-
         <!--Close app label-->
         <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_close"  Background="WhiteSmoke" FontSize="12" FontWeight="Bold" Content="X" Height="25" Width="25"  Margin="0 -25 0 0"  MouseLeftButtonUp="Lbl_close_MouseLeftButtonUp" MouseLeave="Lbl_close_MouseLeave" MouseEnter="Lbl_close_MouseEnter" MouseLeftButtonDown="Lbl_close_MouseLeftButtonDown"/>
-
         <!--Minimze app label-->
         <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" x:Name="lbl_minimize"  Background="WhiteSmoke" FontSize="13" FontWeight="Bold" Content="-" Height="25" Width="25"  Margin="0 -25 25 0" MouseLeave="Lbl_minimize_MouseLeave" MouseLeftButtonDown="Lbl_minimize_MouseLeftButtonDown" MouseLeftButtonUp="Lbl_minimize_MouseLeftButtonUp" MouseEnter="Lbl_minimize_MouseEnter"/>
 
-        <!--logout label-->
-        <TextBlock Text="Logout"  x:Name="txtbox_logout" Margin="0 0 5 0" FontSize="20"  HorizontalAlignment="Right" TextAlignment="Center" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" MouseEnter="TextBlock_MouseEnter" MouseLeave="Txtbox_logout_MouseLeave" MouseLeftButtonDown="Txtbox_logout_MouseLeftButtonDown"/>
+        <Grid Height="43">
+            <!--Key Icon-->
+            <Image Source="Key-Icon\Key-icon.png" x:Name="img_PwChange" MouseLeftButtonUp="PwChange_MouseLeftButtonUp" RenderTransformOrigin="0.944,0.485" Margin="915,0,99,10" Height="28" VerticalAlignment="Bottom" />
+            <!--logout label-->
+            <TextBlock Text="Logout" x:Name="txtbox_logout" FontSize="20"  TextAlignment="Center" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp" MouseEnter="TextBlock_MouseEnter" MouseLeave="Txtbox_logout_MouseLeave" MouseLeftButtonDown="Txtbox_logout_MouseLeftButtonDown" Margin="956,0,0,9.667"/>
+        </Grid>
 
         <!--Sensors -->
-        <Grid Height="543">
+        <Grid Height="551">
             <Image Height="150" Width="200" Source="Sensors\Sensor1_bold.jpg" Margin="0,0,850,393" />
             <Ellipse x:Name="circle_fill_color_1" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="205,60,805,443" />
             <TextBlock x:Name="txt_sensoronetime"  Margin="10,150,850,333"/>
@@ -43,6 +44,6 @@
             <Ellipse x:Name="circle_fill_color_6" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="959,352,51,151" RenderTransformOrigin="-0.483,0.7" />
             <TextBlock x:Name="txt_sensorsixtime"  Margin="764,438,96,45"/>
         </Grid>
-        
+
     </StackPanel>
 </Window>

@@ -74,6 +74,7 @@
       <DependentUpon>Cpst_PasswdChange.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseManager.cs" />
+    <Compile Include="Global.cs" />
     <Compile Include="SensorTypes.cs" />
     <Page Include="Cpst_Main.xaml">
       <SubType>Designer</SubType>
@@ -117,6 +118,9 @@
     <Resource Include="Sensors\Sensor4_bold.jpg" />
     <Resource Include="Sensors\Sensor5_bold.jpg" />
     <Resource Include="Sensors\Sensor6_bold.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Key-Icon\Key-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

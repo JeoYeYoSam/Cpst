@@ -2,21 +2,24 @@
 using System;
 using System.Windows;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace cpst
 {
     class DatabaseManager
     {
-        public string querySensor1 = "select * From sensor_one";
-        public string querySensor2 = "select * From sensor_two";
-        public string querySensor3 = "select * From sensor_three";
-        public string querySensor4 = "select * From sensor_four";
-        public string querySensor5 = "select * From sensor_five";
-        public string querySensor6 = "select * From sensor_six";
-        public string checkcanlogin;
+        private string querySensor1 = "select * From sensor_one";
+        private string querySensor2 = "select * From sensor_two";
+        private string querySensor3 = "select * From sensor_three";
+        private string querySensor4 = "select * From sensor_four";
+        private string querySensor5 = "select * From sensor_five";
+        private string querySensor6 = "select * From sensor_six";
+        private string checkcanlogin;
+        
 
         //Connection String to connect to Database
-        public MySqlConnection con = new MySqlConnection(@"Server=localhost;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
+        private MySqlConnection con = new MySqlConnection(@"Server=localhost;Port=3306;Uid=root;pwd=qweasd;Database=db_laser_sensor");   
         
         public void Open()
         {
@@ -27,10 +30,19 @@ namespace cpst
             con.Close();
         }
 
-        public void ChangePassword(string password)
+        public string hashingPassword(string passwd)
+        {
+            var sha1 = new SHA1CryptoServiceProvider();
+            var data = Encoding.ASCII.GetBytes(passwd);
+            var sha1data = sha1.ComputeHash(data);
+            var hashedPassword = Encoding.ASCII.GetString(sha1data);
+            return hashedPassword;
+        }
+
+        public void ChangePassword(string newpassword)
         {
             con.Open();
-            string query = "UPDATE users SET password = '" + password + "' WHERE id =6";
+            string query = "UPDATE users SET password = '" + hashingPassword(newpassword) + "' WHERE id =6";
             MySqlCommand commandDatabase = new MySqlCommand(query, con);
             commandDatabase.ExecuteReader();
             con.Close();
@@ -40,8 +52,8 @@ namespace cpst
         // Method to analyse login when loginButton is pressed or hit the Enter Key
         public bool Login(string username, string password)
         {
-            string queryAuthentication = $"SELECT * FROM users WHERE username ='"+username+"' AND password='"+password+"'";
-
+            string queryAuthentication = $"SELECT * FROM users WHERE username ='"+username+"' AND password='"+hashingPassword(password)+"'";
+            
             try
             {
                 Open();                         
@@ -168,10 +180,6 @@ namespace cpst
             }
             return new List<int>();            
         }
-
-
-      
-
 
     }
 }

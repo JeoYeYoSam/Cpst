@@ -8,15 +8,16 @@
         Title="Cpst_PasswdChange" Height="247.178" Width="495.057"  WindowStyle="None" AllowsTransparency="True" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="White">
 
     <Grid>
-        <Label Margin="0,0,0.333,219" FontSize="13" Content="CPST- Password Change" Background="WhiteSmoke"/>
+        
+        <Label MouseLeftButtonDown="Label_MouseLeftButtonDown" Margin="0,0,0.333,219" FontSize="13" Content="CPST- Password Change" Background="WhiteSmoke"/>
         <Label Content="Aktuelles Password" Margin="42,76,339.333,143.333"/>    
         <PasswordBox x:Name="Pwbox_currentPw" Margin="217,83,50.333,143.333"/>
         <Label Content="Neues Password" Margin="42,113,358.333,102.333"/>
         <PasswordBox x:Name="Pwbox_newPw" Margin="217,118,50.333,108"/>
         <Label Content="Wiederholung neues Password" Margin="42,150,280.333,65.333"/>
-        <PasswordBox x:Name="Pwbox_repearNewPw" Margin="217,155,50.333,71" />        
-        <Button x:Name="btn_acceptPwChange" Margin="110,214,237.333,14.333" />
-        <Button x:Name="btn_cancelPwChange" Margin="273,214,135.333,14.333"/>
+        <PasswordBox x:Name="Pwbox_repeatNewPw" Margin="217,155,50.333,71" />        
+        <Button Content="Passwort ändern" x:Name="btn_acceptPwChange" Margin="110,214,237.333,14.333" Click="btn_acceptPwChange_Click" />
+        <Button Content="Cancel" x:Name="btn_cancelPwChange" Margin="273,214,135.333,14.333" Click="btn_cancelPwChange_Click"/>
 
     </Grid>
 </Window>
