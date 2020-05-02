@@ -11,7 +11,6 @@ namespace cpst
         
         DatabaseManager databaseConnection = new DatabaseManager();
 
-
         private void PasswdChange()
         {          
            if (Pwbox_repeatNewPw.Password == Pwbox_newPw.Password)
@@ -21,10 +20,10 @@ namespace cpst
                     databaseConnection.ChangePassword(Pwbox_newPw.Password);
                     this.Close();
                }
-                else
-                {
+               else
+               {
                     MessageBox.Show("Aktuelles Passswort ist falsch, bitte versuchen Sie es erneut.");
-                }
+               }
            }
            else
            {
