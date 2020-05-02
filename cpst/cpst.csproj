@@ -112,15 +112,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Sensors\Sensor1_bold.jpg" />
-    <Resource Include="Sensors\Sensor2_bold.jpg" />
-    <Resource Include="Sensors\Sensor3_bold.jpg" />
-    <Resource Include="Sensors\Sensor4_bold.jpg" />
-    <Resource Include="Sensors\Sensor5_bold.jpg" />
-    <Resource Include="Sensors\Sensor6_bold.jpg" />
+    <Resource Include="Key-Icon\Key-icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Key-Icon\Key-icon.png" />
+    <Resource Include="Sensors\Sensor1_bold.png" />
+    <Resource Include="Sensors\Sensor2_bold.png" />
+    <Resource Include="Sensors\Sensor3_bold.png" />
+    <Resource Include="Sensors\Sensor4_bold.png" />
+    <Resource Include="Sensors\Sensor5_bold.png" />
+    <Resource Include="Sensors\Sensor6_bold.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

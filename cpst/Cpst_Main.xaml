@@ -25,24 +25,29 @@
 
         <!--Sensors -->
         <Grid Height="551">
-            <Image Height="150" Width="200" Source="Sensors\Sensor1_bold.jpg" Margin="0,0,850,393" />
+            <Image Height="150" Width="200" Source="Sensors\Sensor1_bold.png" Margin="0,0,850,393" />
             <Ellipse x:Name="circle_fill_color_1" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="205,60,805,443" />
-            <TextBlock x:Name="txt_sensoronetime"  Margin="10,150,850,333"/>
-            <Image Height="150" Width="200" Source="Sensors\Sensor2_bold.jpg" Margin="402,0,448,393"  />
+            <TextBlock x:Name="txt_sensoronetime" TextAlignment="Center" FontSize="15" FontWeight="Bold"  Margin="10,158,850,358"/>
+            
+            <Image Height="150" Width="200" Source="Sensors\Sensor2_bold.png" Margin="402,0,448,393"  />
             <Ellipse x:Name="circle_fill_color_2" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="607,60,403,443" />
-            <TextBlock x:Name="txt_sensortwotime"  Margin="412,155,448,328"/>
-            <Image Height="150" Width="200" Source="Sensors\Sensor3_bold.jpg" Margin="754,0,96,393"  />
+            <TextBlock x:Name="txt_sensortwotime" TextAlignment="Center" FontSize="15" FontWeight="Bold"  Margin="412,158,448,358"/>
+            
+            <Image Height="150" Width="200" Source="Sensors\Sensor3_bold.png" Margin="754,0,96,393"  />
             <Ellipse x:Name="circle_fill_color_3" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="959,60,51,443" />
-            <TextBlock x:Name="txt_sensorthreetime"  Margin="764,150,96,333"/>
-            <Image Height="150" Width="200" Source="Sensors\Sensor4_bold.jpg" Margin="0,288,850,105"  />
+            <TextBlock x:Name="txt_sensorthreetime" TextAlignment="Center" FontSize="15" FontWeight="Bold"  Margin="764,158,96,358"/>
+            
+            <Image Height="150" Width="200" Source="Sensors\Sensor4_bold.png" Margin="0,288,850,105"  />
             <Ellipse Grid.Column="0" x:Name="circle_fill_color_4" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="205,352,805,151" />
-            <TextBlock x:Name="txt_sensorfourime"  Margin="10,438,850,45"/>
-            <Image Height="150" Width="200" Source="Sensors\Sensor5_bold.jpg" Margin="402,288,448,105"  />
-            <TextBlock x:Name="txt_sensorfivetime"  Margin="412,438,448,45"/>
-            <Ellipse x:Name="circle_fill_color_5" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="607,352,403,151" />
-            <Image Height="150" Width="200" Source="Sensors\Sensor6_bold.jpg" Margin="754,288,96,105"  />
+            <TextBlock x:Name="txt_sensorfourime" TextAlignment="Center" FontSize="15" FontWeight="Bold"  Margin="10,447,850,70"/>
+            
+            <Image Height="150" Width="200" Source="Sensors\Sensor5_bold.png" Margin="402,288,448,105"  />
+            <TextBlock x:Name="txt_sensorfivetime" TextAlignment="Center" FontSize="15" FontWeight="Bold"  Margin="412,447,448,70"/>
+            <Ellipse x:Name="circle_fill_color_5"  Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="607,352,403,151" />
+            
+            <Image Height="150" Width="200" Source="Sensors\Sensor6_bold.png" Margin="754,288,96,105"  />
             <Ellipse x:Name="circle_fill_color_6" Height="40" Width="40" StrokeThickness="2" Stroke="Black" Margin="959,352,51,151" RenderTransformOrigin="-0.483,0.7" />
-            <TextBlock x:Name="txt_sensorsixtime"  Margin="764,438,96,45"/>
+            <TextBlock x:Name="txt_sensorsixtime" TextAlignment="Center" FontSize="15" FontWeight="Bold"  Margin="764,447,96,70"/>
         </Grid>
 
     </StackPanel>

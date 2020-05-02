@@ -19,10 +19,11 @@
         <Grid Height="274">
             <TextBlock Grid.Column="0" Text="Username" FontWeight="Bold" Margin="126,58,310,197"/>
             <TextBox x:Name="txt_username" Margin="195,58,107,197"/>
+            
             <TextBlock Grid.Column="0" Text="Password" FontWeight="Bold" Margin="126,102,310,150" RenderTransformOrigin="0.474,-1.197"/>
             <PasswordBox x:Name="pw_box" Margin="195,101,107,150" KeyUp="Pw_box_KeyUp"/>
-            <Button x:Name="btn_login" Content="Login" Margin="195,210,190,33" Click="Btn_login_Click"/>
 
+            <Button x:Name="btn_login" Content="Login" Margin="195,210,190,33" Click="Btn_login_Click"/>
         </Grid>   
 
     </StackPanel>

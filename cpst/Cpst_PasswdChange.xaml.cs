@@ -21,7 +21,15 @@ namespace cpst
                     databaseConnection.ChangePassword(Pwbox_newPw.Password);
                     this.Close();
                }
-           }            
+                else
+                {
+                    MessageBox.Show("Aktuelles Passswort ist falsch, bitte versuchen Sie es erneut.");
+                }
+           }
+           else
+           {
+                MessageBox.Show("Neues Passwort falsch unterschiedlich, bitte prüfen Sie Ihr neues Passwort.");
+           }
         }
 
 
