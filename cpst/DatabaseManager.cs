@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
+
 namespace cpst
 {
     class DatabaseManager
@@ -30,19 +31,26 @@ namespace cpst
             con.Close();
         }
 
-        public string hashingPassword(string passwd)
+        public string hashingPassword(string password)
         {
-            var sha1 = new SHA1CryptoServiceProvider();
-            var data = Encoding.ASCII.GetBytes(passwd);
-            var sha1data = sha1.ComputeHash(data);
-            var hashedPassword = Encoding.ASCII.GetString(sha1data);
-            return hashedPassword;
-        }
+            var hashAlgorithm = new Org.BouncyCastle.Crypto.Digests.Sha3Digest(512);
+            
+            byte[] input = Encoding.ASCII.GetBytes(password);
+
+            hashAlgorithm.BlockUpdate(input, 0, input.Length);
+
+            byte[] result = new byte[64]; 
+            hashAlgorithm.DoFinal(result, 0);
+
+            string hashString = BitConverter.ToString(result);
+            hashString = hashString.Replace("-", "").ToLowerInvariant();            
+            return hashString;            
+        }        
 
         public void ChangePassword(string newpassword)
         {
             con.Open();
-            string query = "UPDATE users SET password = '" + hashingPassword(newpassword) + "' WHERE id =6";
+            string query = "UPDATE users SET password = '" + hashingPassword(newpassword) + "' WHERE username = '"+ Global.username + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, con);
             commandDatabase.ExecuteReader();
             con.Close();

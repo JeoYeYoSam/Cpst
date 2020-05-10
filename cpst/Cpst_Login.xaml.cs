@@ -14,7 +14,7 @@ namespace cpst
         }             
 
         private void login()
-        {            
+        {
             if (databaseConnection.Login(txt_username.Text, pw_box.Password))
             {
                 Global.username = txt_username.Text;

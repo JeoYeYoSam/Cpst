@@ -11,7 +11,7 @@ namespace cpst
         
         DatabaseManager databaseConnection = new DatabaseManager();
 
-        private void PasswdChange()
+        private void PasswordChange()
         {          
            if (Pwbox_repeatNewPw.Password == Pwbox_newPw.Password)
            {
@@ -35,7 +35,7 @@ namespace cpst
         private void btn_acceptPwChange_Click(object sender, RoutedEventArgs e)
         {
 
-            PasswdChange();
+            PasswordChange();
         }
 
         private void btn_cancelPwChange_Click(object sender, RoutedEventArgs e)
